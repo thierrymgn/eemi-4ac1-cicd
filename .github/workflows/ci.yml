@@ -9,6 +9,15 @@ jobs:
   deps:
     name: "Install depedencies"
     runs-on: "ubuntu-latest"
+    services:
+      database:
+        image: mysql
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: app
+          MYSQL_ROOT_HOST: "%"
+        ports:
+          - 3306:3306
     steps:
       - uses: actions/checkout@v4
       - name: Setup PHP with tools
@@ -20,3 +29,5 @@ jobs:
         run: |
           export APP_ENV=test
           composer install --prefer-dist --no-interaction --no-progress
+      - name: "Check Database healthy"
+        run: nc -vz 127.0.0.1 3306
