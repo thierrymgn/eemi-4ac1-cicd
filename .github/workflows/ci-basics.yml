@@ -17,6 +17,7 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Say Hello again"
+        continue-on-error: true
         run: |
           echo "Hello world"
           echo "Hello world"
