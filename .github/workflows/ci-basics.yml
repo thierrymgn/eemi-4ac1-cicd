@@ -15,9 +15,9 @@ jobs:
   hello2:
     name: "Hello world 2"
     runs-on: "ubuntu-latest"
+    continue-on-error: true
     steps:
       - name: "Say Hello again"
-        continue-on-error: true
         run: |
           echo "Hello world"
           echo "Hello world"
