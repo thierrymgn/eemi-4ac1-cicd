@@ -7,27 +7,29 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 abstract class AbstractEntityTest extends KernelTestCase
 {
-	protected function assertIsValid(mixed $entity): void
-	{
-		$this->assertViolationsIs(false, $entity);
-	}
+    protected function assertIsValid(mixed $entity): void
+    {
+        $this->assertViolationsIs(false, $entity);
+    }
 
-	protected function assertIsInvalid(mixed $entity): void
-	{
-		$this->assertViolationsIs(true, $entity);
-	}
+    protected function assertIsInvalid(mixed $entity): void
+    {
+        $this->assertViolationsIs(true, $entity);
+    }
 
-	private function assertViolationsIs(bool $expectedHasViolations, mixed $entity): void
-	{
-		/** @var ValidatorInterface $validator */
-		$validator = self::getContainer()->get(ValidatorInterface::class);
-		$violations = $validator->validate($entity);
-		$hasViolations = (count($violations) >= 1);
+    private function assertViolationsIs(bool $expectedHasViolations, mixed $entity): void
+    {
+        /** @var ValidatorInterface $validator */
+        $validator = self::getContainer()->get(ValidatorInterface::class);
+        $violations = $validator->validate($entity);
+        $hasViolations = (count($violations) >= 1);
 
-		if ($hasViolations)
-			foreach ($violations as $violation)
-				$debug[] = $violation->getMessage() . '(propertyPath: ' . $violation->getPropertyPath() . ', invalidValue: ' . $violation->getInvalidValue() . ')';
+        if ($hasViolations) {
+            foreach ($violations as $violation) {
+                $debug[] = $violation->getMessage().'(propertyPath: '.$violation->getPropertyPath().', invalidValue: '.$violation->getInvalidValue().')';
+            }
+        }
 
-		$this->assertSame($expectedHasViolations, $hasViolations, implode("\n", $debug ?? []));
-	}
+        $this->assertSame($expectedHasViolations, $hasViolations, implode("\n", $debug ?? []));
+    }
 }

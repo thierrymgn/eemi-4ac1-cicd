@@ -16,24 +16,26 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class TodolistRepository extends ServiceEntityRepository
 {
-	public function __construct(ManagerRegistry $registry)
-	{
-		parent::__construct($registry, Todolist::class);
-	}
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, Todolist::class);
+    }
 
-	public function save(Todolist $entity, bool $flush = false): void
-	{
-		$this->getEntityManager()->persist($entity);
+    public function save(Todolist $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
 
-		if ($flush)
-			$this->getEntityManager()->flush();
-	}
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
 
-	public function remove(Todolist $entity, bool $flush = false): void
-	{
-		$this->getEntityManager()->remove($entity);
+    public function remove(Todolist $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
 
-		if ($flush)
-			$this->getEntityManager()->flush();
-	}
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
 }

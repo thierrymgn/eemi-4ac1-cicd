@@ -56,9 +56,6 @@ jobs:
             -   name: "Run PHPStan"
                 run: vendor/bin/phpstan analyse src tests --level 6
 
-            -   name: "Check PHP Coding Standards"
-                run: vendor/bin/php-cs-fixer fix --dry-run --diff
-
             -   name: "Run PHP Coding Standards"
                 run: vendor/bin/php-cs-fixer fix
 
