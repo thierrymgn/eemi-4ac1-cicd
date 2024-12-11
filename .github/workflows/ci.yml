@@ -59,6 +59,9 @@ jobs:
             -   name: "Check PHP Coding Standards"
                 run: vendor/bin/php-cs-fixer fix --dry-run --diff
 
+            -   name: "Run PHP Coding Standards"
+                run: vendor/bin/php-cs-fixer fix
+
     tests:
         name: "Run tests"
         runs-on: "ubuntu-latest"
