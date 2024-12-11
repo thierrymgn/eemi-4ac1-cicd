@@ -96,7 +96,7 @@ jobs:
                     DATABASE_NAME: app
 
             -   name: "Run Unit Tests"
-                run: ./vendor/bin/phpunit tests/Unit
+                run: ./vendor/bin/phpunit tests/_1_Unit
 
             -   name: "Run Functional Tests"
-                run: ./vendor/bin/phpunit tests/Functional
+                run: ./vendor/bin/phpunit tests/_3_Applicationg
