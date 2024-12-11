@@ -26,3 +26,8 @@
 /.phpcs-cache
 /phpcs.xml
 # <|
+.idea
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
